@@ -33,8 +33,8 @@ class ExceptionNotification::Notifier < ActionMailer::Base
   @@email_prefix = "[ERROR] "
   cattr_accessor :email_prefix
 
-  @@sections = %w(request session environment backtrace)
-  cattr_accessor :sections
+  @@exception_notifier_sections = %w(request session environment backtrace)
+  cattr_accessor :exception_notifier_sections
 
   def self.reloadable?() false end
 
@@ -51,7 +51,7 @@ class ExceptionNotification::Notifier < ActionMailer::Base
                   :exception => exception, :exception_source => source, :host => (request.env["HTTP_X_FORWARDED_HOST"] || request.env["HTTP_HOST"]),
                   :backtrace => sanitize_backtrace(exception.backtrace),
                   :rails_root => rails_root, :data => data,
-                  :sections => sections })
+                  :exception_notifier_sections => exception_notifier_sections })
   end
 
   def self.exception_source(controller)

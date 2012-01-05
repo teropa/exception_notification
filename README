@@ -94,10 +94,10 @@ access to the following variables:
 * @backtrace: a sanitized version of the exception's backtrace
 * @rails_root: a sanitized version of RAILS_ROOT
 * @data: a hash of optional data values that were passed to the notifier
-* @sections: the array of sections to include in the email
+* @exception_notifier_sections: the array of sections to include in the email
 
 You can reorder the sections, or exclude sections completely, by altering the
-ExceptionNotification::Notifier.sections variable. You can even add new sections that
+ExceptionNotification::Notifier.exception_notifier_sections variable. You can even add new sections that
 describe application-specific data--just add the section's name to the list
 (whereever you'd like), and define the corresponding partial. Then, if your
 new section requires information that isn't available by default, make sure
